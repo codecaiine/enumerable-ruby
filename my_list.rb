@@ -1,13 +1,17 @@
+require_relative 'my_enumerable'
+
 class MyList
-  include Enumerable
+  include MyEnumerable
 
   def initialize(*list)
     @list = list
   end
 
-  def each(&block)
-    @list.each do |n|
-      block.call(n)
+  def each
+    n = 0
+    while @list[n]
+      yield @list[n]
+      n += 1
     end
   end
 end
@@ -29,5 +33,5 @@ list.any? { |e| e == 5 }
 # false
 
 # Test #filter
-list.filter(&:even?)
+puts list.filter(&:even?)
 # [2, 4]
