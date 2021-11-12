@@ -3,7 +3,6 @@ class MyList
 
   def initialize(*list)
     @list = list
-    puts @list
   end
 
   def each(&block)
